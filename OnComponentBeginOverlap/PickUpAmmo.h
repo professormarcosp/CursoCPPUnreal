@@ -23,18 +23,21 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+    //Uma caixa utilizada para colisão
 	UPROPERTY(VisibleAnywhere, Category = "PickUpAmmo")
 	class UBoxComponent* Colisor;
 
-	UPROPERTY(EditAnywhere, Category = "PickUpAmmo")
+	//A malha do Objeto
+	UPROPERTY(VisibleAnywhere, Category = "PickUpAmmo")
 	class UStaticMeshComponent* ObjetoDoPickup;
 
-	UPROPERTY(EditAnywhere, Category = "PickUpAmmo")
+	//Um componente de audio que será anexado ao pickup
+	UPROPERTY(VisibleAnywhere, Category = "PickUpAmmo")
 	class UAudioComponent* SomDoPickup;
 
+	//Função que será anexada (bind) na função OnComponentBeginOverlap
+	//OnComponentBeginOverlap possui muito mais parâmetros que OnActorBeginOverlap
 	UFUNCTION()
-		void ColidiuComPickup(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
-	
-	
+	void ColidiuComPickup(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+		
 };
