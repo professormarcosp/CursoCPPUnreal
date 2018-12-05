@@ -13,6 +13,7 @@
 #include "Engine/Engine.h"
 #include "Components/ArrowComponent.h"
 #include "Components/SceneComponent.h"
+#include "Public/WorldCollision.h"
 
 
 
@@ -52,7 +53,9 @@ void APersonagemTPS::BeginPlay()
 
 	FActorSpawnParameters Parametros;
 	Parametros.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	AArma* ArmaPlayer = GetWorld()->SpawnActor<AArma>(BP_ArmaTipoRifle, FTransform(), Parametros);
+	//Aqui tinhamos uma variável declarada dentro da função BeginPlay. Ou seja apenas disponível neste bloco de código neste escopo de código
+	//Mas nós queremos que esta variável este disponível em toda a classe
+	ArmaPlayer = GetWorld()->SpawnActor<AArma>(BP_ArmaTipoRifle, FTransform(), Parametros);
 	ArmaPlayer->AttachToComponent(Cast<USceneComponent>(GetMesh()), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("SocketDaArma"));
 
 }
@@ -87,6 +90,10 @@ void APersonagemTPS::Levantar()
 	UnCrouch();
 }
 
+void APersonagemTPS::Atirar()
+{
+	ArmaPlayer->Atirar();
+}
 
 // Called every frame
 void APersonagemTPS::Tick(float DeltaTime)
@@ -110,6 +117,8 @@ void APersonagemTPS::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 	PlayerInputComponent->BindAction("Pular", EInputEvent::IE_Pressed, this, &APersonagemTPS::Pular);
 	PlayerInputComponent->BindAction("Pular", EInputEvent::IE_Released, this, &APersonagemTPS::PararPulo);
+
+	PlayerInputComponent->BindAction("Atirar", EInputEvent::IE_Pressed, this, &APersonagemTPS::Atirar);
 
 }
 
