@@ -92,7 +92,7 @@ void AGranada::ImpulsoRadial(float Raio, float Forca)
 {
 	for (TActorIterator<AStaticMeshActor> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Nome: %S %X"), *ActorItr->GetName(), *ActorItr)
+		UE_LOG(LogTemp, Warning, TEXT("Nome: %S %X"), *ActorItr->GetName(), *ActorItr);
 		UStaticMeshComponent* RaizDoStaticMesh;
 		RaizDoStaticMesh = Cast<UStaticMeshComponent>(ActorItr->GetRootComponent());
 		if (RaizDoStaticMesh)
