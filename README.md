@@ -2,8 +2,7 @@
 
 Professor Marcos Pacheco
 
-Aprendendo a Programar Games com C++ e a Unreal Engine
-
+Curso: Aprendendo a Programar Games com C++ e a Unreal Engine
 [Disponível na Udemy Clique Aqui!](https://www.udemy.com/course/programacaonaue4/?referralCode=F755702A7A947CA8159A)
 
 Códigos fontes e Projetos do Curso Udemy:  Aprendendo a Programar Games com C++ e a Unreal Engine
